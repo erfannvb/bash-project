@@ -6,6 +6,8 @@ while [ true ]; do
   echo "1. Add Task"
   echo "2. Add to Completed Tasks"
   echo "3. Show Unfinished Tasks"
+  echo "4. Show Completed Tasks"
+  echo "5. Show Removed Tasks"
   echo "-------------------"
 
   echo "Choose an option"
@@ -43,6 +45,22 @@ while [ true ]; do
       echo "file is empty!"
     fi
     ;;
+
+    4)
+      if [[ -n $(cat completedTask.txt) ]]; then
+        cat completedTask.txt
+      else
+        echo "file is empty!"
+      fi
+      ;;
+
+    5)
+      if [[ -n $(cat removedTask.txt) ]]; then
+        cat removedTask.txt
+      else
+        echo "file is empty!"
+      fi
+      ;;
 
   esac
 done

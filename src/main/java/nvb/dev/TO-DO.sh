@@ -8,6 +8,8 @@ while [ true ]; do
   echo "3. Show Unfinished Tasks"
   echo "4. Show Completed Tasks"
   echo "5. Show Removed Tasks"
+  echo "6. Search"
+  echo "7. Exit"
   echo "-------------------"
 
   echo "Choose an option"
@@ -60,6 +62,27 @@ while [ true ]; do
       else
         echo "file is empty!"
       fi
+      ;;
+
+    6)
+      echo "What are you looking for: "
+      read userSearch
+      if grep -Fxq "$userSearch" taskList.txt; then
+        grep "$userSearch" taskList.txt
+        echo "Found in taskList.txt"
+      elif grep -Fxq "$userSearch" completedTask.txt; then
+        grep "$userSearch" completedTask.txt
+        echo "Found in completedTask.txt"
+      elif grep -Fxq "$userSearch" removedTask.txt; then
+        grep "$userSearch" removedTask.txt
+        echo "Found in removedTask.txt"
+      else
+        echo "Not Found!!!"
+      fi
+      ;;
+
+    7)
+      exit
       ;;
 
   esac

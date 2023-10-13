@@ -19,7 +19,7 @@ while [ true ]; do
 
       "replace")
         for i in {1..5}; do
-          sed 's/World/Bash/g' File${i}.txt | cat > File${i}.txt
+          sed -i 's/World/Bash/g' File${i}.txt
         done
         ;;
 
